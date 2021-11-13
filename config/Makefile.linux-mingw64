@@ -19,4 +19,4 @@ LIB.SONAME    = lib$(NAME).dll
 LIB.DEVLNK    = lib$(NAME).dll.a    # for mingw this is the dll import lib
 LIB.SHARED    = $(NAME).dll
 LIB.STATIC    = lib$(NAME).a        # the static lib will be broken
-LDFLAGS.SO    = -nostdlib -shared -soname $(LIB.SONAME) --out-implib lib/$(LIB.DEVLNK)
+LDFLAGS.SO    = -shared -o,$(LIB.SONAME) -Wl,--out-implib,lib/$(LIB.DEVLNK)
