@@ -208,7 +208,7 @@ install:     install.include install.lib install.pkgconfig
 install.lib: glew.lib
 	$(INSTALL) -d -m 0755 "$(DESTDIR)$(LIBDIR)"
 # runtime
-ifeq ($(filter-out mingw% cygwin,$(SYSTEM)),)
+ifeq ($(filter-out linux-mingw% mingw% cygwin,$(SYSTEM)),)
 	$(INSTALL) -d -m 0755 "$(DESTDIR)$(BINDIR)"
 	$(INSTALL) -m 0755 $(LIB.SHARED.DIR)/$(LIB.SHARED) "$(DESTDIR)$(BINDIR)/"
 else
@@ -219,7 +219,7 @@ ifneq ($(LN),)
 endif
 
 # development files
-ifeq ($(filter-out mingw% cygwin,$(SYSTEM)),)
+ifeq ($(filter-out linux-mingw% mingw% cygwin,$(SYSTEM)),)
 	$(INSTALL) -m 0644 lib/$(LIB.DEVLNK) "$(DESTDIR)$(LIBDIR)/"
 endif
 ifneq ($(LN),)
